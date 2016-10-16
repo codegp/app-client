@@ -1,0 +1,75 @@
+import { constants } from './constants'
+
+export const COMPONENT_TYPES = {
+  TEXT: 0,
+  TYPE_SELECT: 1,
+  INT: 2,
+  FLOAT: 3,
+  TYPE_TO_FLOAT: 4,
+  BOOL: 5,
+  FILE_UPLOAD: 6,
+}
+
+export const getAttributeMaps = () => {
+  var attributeMaps = {}
+  attributeMaps[constants.BOT_TYPE] = BOT_ATTRIBUTE_TO_COMPONENT_MAP
+  attributeMaps[constants.ATTACK_TYPE] = ATTACK_ATTRIBUTE_TO_COMPONENT_MAP
+  attributeMaps[constants.ITEM_TYPE] = ITEM_ATTRIBUTE_TO_COMPONENT_MAP
+  attributeMaps[constants.TERRAIN_TYPE] = TERRAIN_ATTRIBUTE_TO_COMPONENT_MAP
+  attributeMaps[constants.MOVE_TYPE] = MOVE_ATTRIBUTE_TO_COMPONENT_MAP
+  return attributeMaps
+}
+
+const BOT_ATTRIBUTE_TO_COMPONENT_MAP = {
+  name : COMPONENT_TYPES.TEXT,
+  attackTypeIDs : COMPONENT_TYPES.TYPE_SELECT,
+  moveTypeIDs : COMPONENT_TYPES.TYPE_SELECT,
+  canSpawn : COMPONENT_TYPES.BOOL,
+  canBeSpawned : COMPONENT_TYPES.BOOL,
+  spawnDelay: COMPONENT_TYPES.FLOAT,
+  maxHealth : COMPONENT_TYPES.INT,
+  canHeal : COMPONENT_TYPES.BOOL,
+  moveDelayFactor : COMPONENT_TYPES.FLOAT,
+  damageFactor: COMPONENT_TYPES.FLOAT,
+  attackDelayFactor : COMPONENT_TYPES.FLOAT,
+  rangeFactor : COMPONENT_TYPES.FLOAT,
+  accuracyFactor : COMPONENT_TYPES.FLOAT,
+  spawnDelayFactor: COMPONENT_TYPES.FLOAT,
+  iconData: COMPONENT_TYPES.FILE_UPLOAD,
+}
+
+const ITEM_ATTRIBUTE_TO_COMPONENT_MAP = {
+  name : COMPONENT_TYPES.TEXT,
+  moveDelayFactor : COMPONENT_TYPES.FLOAT,
+  damageFactor: COMPONENT_TYPES.FLOAT,
+  attackDelayFactor : COMPONENT_TYPES.FLOAT,
+  rangeFactor : COMPONENT_TYPES.FLOAT,
+  accuracyFactor : COMPONENT_TYPES.FLOAT,
+  spawnDelayFactor: COMPONENT_TYPES.FLOAT,
+  iconData: COMPONENT_TYPES.FILE_UPLOAD,
+}
+
+const ATTACK_ATTRIBUTE_TO_COMPONENT_MAP = {
+  name : COMPONENT_TYPES.TEXT,
+  damage: COMPONENT_TYPES.FLOAT,
+  delay : COMPONENT_TYPES.FLOAT,
+  range : COMPONENT_TYPES.FLOAT,
+  accuracy : COMPONENT_TYPES.FLOAT,
+  attackDelayDealt :  COMPONENT_TYPES.FLOAT,
+  moveDelayDealt :  COMPONENT_TYPES.FLOAT,
+  iconData: COMPONENT_TYPES.FILE_UPLOAD,
+}
+
+const TERRAIN_ATTRIBUTE_TO_COMPONENT_MAP = {
+  name : COMPONENT_TYPES.TEXT,
+  canBeOccupied: COMPONENT_TYPES.BOOL,
+  moveDelayFactor: COMPONENT_TYPES.FLOAT,
+  damagePenalty : COMPONENT_TYPES.FLOAT,
+  iconData: COMPONENT_TYPES.FILE_UPLOAD,
+}
+
+const MOVE_ATTRIBUTE_TO_COMPONENT_MAP = {
+  name : COMPONENT_TYPES.TEXT,
+  delay:  COMPONENT_TYPES.FLOAT,
+  takesDelayFromTerrain: COMPONENT_TYPES.BOOL,
+}
